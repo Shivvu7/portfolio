@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sivasai Sariki | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles */
+        body {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fadeInScale 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #6f4e37;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        .tab-button {
+            transition: all 0.3s ease-in-out;
+            background-color: #6f4e37;
+            color: white;
+        }
+
+        .tab-button:hover {
+            background-color: #d4a373;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-button, .exp-button, .proj-button {
+            display: inline-block;
+            background-color: #6f4e37;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
+        }
+
+        .skill-button:hover, .exp-button:hover, .proj-button:hover {
+            background-color: #d4a373;
+            transform: scale(1.1);
+        }
+
+        .content-section {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .content-section.slide-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .expand {
+            animation: expand 0.5s ease-in-out;
+        }
+
+        @keyframes expand {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        // Function to show/hide sections with animation
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('slide-in');
+            });
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.remove('hidden');
+            setTimeout(() => {
+                activeSection.classList.add('slide-in');
+            }, 10);
+        }
+
+        // Function to toggle details with animation
+        function toggleDetails(detailsId) {
+            const details = document.getElementById(detailsId);
+            details.classList.toggle('hidden');
+            details.classList.toggle('expand');
+        }
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('.dark-mode-toggle').classList.toggle('bg-[#3e2723]');
+            document.querySelector('.dark-mode-toggle').classList.toggle('bg-[#f5f1e6]');
+        }
+    </script>
+</head>
+<body class="bg-[#f5f1e6] text-[#3e2723] font-sans transition-colors duration-300">
+    <!-- Dark Mode Toggle -->
+    <div class="fixed top-4 right-4">
+        <button onclick="toggleDarkMode()" class="dark-mode-toggle p-2 rounded-full bg-[#f5f1e6] shadow-lg">
+            🌓
+        </button>
+    </div>
+
+    <!-- Profile Section -->
+    <section class="text-center p-10">
+        <img src="your-profile.jpg" alt="Profile Photo" class="profile-img shadow-md mx-auto">
+        <h1 class="text-5xl font-extrabold text-[#3e2723] mt-4">Sivasai Sariki</h1>
+        <p class="text-lg mt-2 text-[#6f4e37]">Software Developer | Data Scientist | Web Developer</p>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center space-x-4 p-6">
+        <button onclick="showSection('intro')" class="tab-button p-3 rounded shadow-md">
+            About Me
+        </button>
+        <button onclick="showSection('skills')" class="tab-button p-3 rounded shadow-md">Skills</button>
+        <button onclick="showSection('experience')" class="tab-button p-3 rounded shadow-md">Experience</button>
+        <button onclick="showSection('projects')" class="tab-button p-3 rounded shadow-md">Projects</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div id="intro" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
+        <p class="text-lg">
+            Aspiring Software Development Engineer (SDE) with a strong foundation in Web Development and Machine Learning.
+            Passionate about solving complex problems, optimizing systems, and building scalable applications.
+            Proficient in C++, Python, React.js, and Cloud Computing.
+            Eager to contribute innovative solutions while continuously learning and growing in a dynamic tech environment.
+        </p>
+    </div>
+
+    <div id="skills" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
+        
+        <div class="flex flex-wrap justify-center">
+            <span class="skill-button">C++</span>
+            <span class="skill-button">Python</span>
+            <span class="skill-button">Javascript</span>
+            <span class="skill-button">SQL</span>
+            <span class="skill-button">MongoDB</span>
+
+            <span class="skill-button">React.js</span>
+            <span class="skill-button">Node.js</span>
+            <span class="skill-button">Express.js</span>
+            
+            <span class="skill-button">Machine Learning</span>
+            <span class="skill-button">Problem solving & DSA</span>
+
+        </div>
+    </div>
+
+    <div id="experience" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
+        <p class="text-lg exp-button" onclick="toggleDetails('exp-details-1')">Data Science Intern - YBI Foundation</p>
+        <p id="exp-details-1" class="hidden text-gray-700 mt-2">
+            Worked on Credit Card Default Prediction, analyzing large datasets and building predictive models.
+        </p>
+
+        <p class="text-lg exp-button" onclick="toggleDetails('exp-details-2')">Web Developer Intern - Delphini Labs</p>
+        <p id="exp-details-2" class="hidden text-gray-700 mt-2">
+            Developed and maintained responsive web applications using React.js, Tailwind CSS, and Vite.
+            Collaborated with teams to design user-friendly interfaces and improve UI/UX.
+            Optimized website performance using best coding practices.
+            Used Git/GitHub for version control and participated in Agile workflows.
+        </p>
+    </div>
+
+    <div id="projects" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
+        <p class="text-lg proj-button" onclick="toggleDetails('proj-details-1')">Chatbot Application</p>
+        <p id="proj-details-1" class="hidden text-gray-700 mt-2">
+            Developed a chatbot using NLP for intelligent responses, integrated with a user-friendly UI, and trained on custom datasets.
+        </p>
+
+        <p class="text-lg proj-button" onclick="toggleDetails('proj-details-2')">Smart Garbage Bin</p>
+        <p id="proj-details-2" class="hidden text-gray-700 mt-2">
+            Designed an IoT-based smart bin with proximity sensors for automatic lid opening, waste classification, and weight monitoring.
+        </p>
+
+        <p class="text-lg proj-button" onclick="toggleDetails('proj-details-3')">Credit Card Default Prediction</p>
+        <p id="proj-details-3" class="hidden text-gray-700 mt-2">
+            Built a machine learning model using Python and Scikit-learn to predict credit card defaults and improve financial risk assessment.
+        </p>
+    </div>
+</body>
+</html>
