@@ -117,10 +117,12 @@
         }
 
         // Function to toggle dark mode
-        function toggleDarkMode() {
+       
+         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
-            document.querySelector('.dark-mode-toggle').classList.toggle('bg-[#3e2723]');
-            document.querySelector('.dark-mode-toggle').classList.toggle('bg-[#f5f1e6]');
+            const btn = document.querySelector('.dark-mode-toggle');
+            btn.classList.toggle('bg-[#3e2723]');
+            btn.classList.toggle('bg-[#f5f1e6]');
         }
     </script>
 </head>
