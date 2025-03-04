@@ -11,6 +11,7 @@
             opacity: 0;
             transform: scale(0.95);
             animation: fadeInScale 1s ease-in-out forwards;
+            background: linear-gradient(135deg, #f5f1e6, #e0d8c5);
         }
 
         @keyframes fadeInScale {
@@ -30,23 +31,43 @@
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid #6f4e37;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .profile-img:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(111, 78, 55, 0.6);
         }
 
         .tab-button {
             transition: all 0.3s ease-in-out;
-            background-color: #6f4e37;
-            color: white;
+            background-color: transparent;
+            color: #6f4e37;
+            padding: 10px 20px;
+            font-weight: bold;
+            position: relative;
+            border-radius: 25px;
         }
 
-        .tab-button:hover {
-            background-color: #d4a373;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #6f4e37;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .tab-button:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .tab-button.active::after {
+            width: 100%;
+            left: 0;
         }
 
         .skill-button, .exp-button, .proj-button {
@@ -55,9 +76,10 @@
             color: white;
             padding: 10px 20px;
             margin: 5px;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             transition: transform 0.3s ease-in-out, background-color 0.3s;
+            font-weight: bold;
         }
 
         .skill-button:hover, .exp-button:hover, .proj-button:hover {
@@ -69,6 +91,12 @@
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
             opacity: 0;
             transform: translateX(20px);
+            background: white;
+            border-radius: 25px; /* Rounded edges for all sections */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
         }
 
         .content-section.slide-in {
@@ -94,6 +122,43 @@
                 transform: translateY(0);
             }
         }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background: linear-gradient(135deg, #3e2723, #2c1e1a);
+            color: #f5f1e6;
+        }
+
+        .dark-mode .content-section {
+            background-color: #4a342e;
+            color: #f5f1e6;
+        }
+
+        .dark-mode .tab-button {
+            color: #f5f1e6;
+        }
+
+        .dark-mode .tab-button::after {
+            background-color: #f5f1e6;
+        }
+
+        .dark-mode .skill-button, .dark-mode .exp-button, .dark-mode .proj-button {
+            background-color: #4a342e;
+            color: #f5f1e6;
+        }
+
+        .dark-mode .skill-button:hover, .dark-mode .exp-button:hover, .dark-mode .proj-button:hover {
+            background-color: #d4a373;
+            color: #3e2723;
+        }
+
+        .dark-mode .profile-img {
+            border-color: #d4a373;
+        }
+
+        .dark-mode .profile-img:hover {
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.6);
+        }
     </style>
     <script>
         // Function to show/hide sections with animation
@@ -102,11 +167,15 @@
                 section.classList.add('hidden');
                 section.classList.remove('slide-in');
             });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
             const activeSection = document.getElementById(sectionId);
             activeSection.classList.remove('hidden');
             setTimeout(() => {
                 activeSection.classList.add('slide-in');
             }, 10);
+            document.querySelector(`[onclick="showSection('${sectionId}')"]`).classList.add('active');
         }
 
         // Function to toggle details with animation
@@ -114,15 +183,19 @@
             const details = document.getElementById(detailsId);
             details.classList.toggle('hidden');
             details.classList.toggle('expand');
+            details.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         // Function to toggle dark mode
-       
-         function toggleDarkMode() {
+        function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
-            const btn = document.querySelector('.dark-mode-toggle');
-            btn.classList.toggle('bg-[#3e2723]');
-            btn.classList.toggle('bg-[#f5f1e6]');
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeToggle.textContent = '🌞';
+            } else {
+                darkModeToggle.textContent = '🌚';
+            }
         }
     </script>
 </head>
@@ -137,13 +210,13 @@
     <!-- Profile Section -->
     <section class="text-center p-10">
         <img src="your-profile.jpg" alt="Profile Photo" class="profile-img shadow-md mx-auto">
-        <h1 class="text-5xl font-extrabold text-[#3e2723] mt-4">Sivasai Sariki</h1>
+        <h1 class="text-5xl font-extrabold text-[#6f4e37] mt-4">Sivasai Sariki</h1>
         <p class="text-lg mt-2 text-[#6f4e37]">Software Developer | Data Scientist | Web Developer</p>
     </section>
 
     <!-- Navigation Buttons -->
     <div class="flex justify-center space-x-4 p-6">
-        <button onclick="showSection('intro')" class="tab-button p-3 rounded shadow-md">
+        <button onclick="showSection('intro')" class="tab-button p-3 rounded shadow-md active">
             About Me
         </button>
         <button onclick="showSection('skills')" class="tab-button p-3 rounded shadow-md">Skills</button>
@@ -152,7 +225,8 @@
     </div>
 
     <!-- Content Sections -->
-    <div id="intro" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
+<center>
+    <div id="intro" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4">
         <p class="text-lg">
             Aspiring Software Development Engineer (SDE) with a strong foundation in Web Development and Machine Learning.
             Passionate about solving complex problems, optimizing systems, and building scalable applications.
@@ -162,21 +236,17 @@
     </div>
 
     <div id="skills" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
-        
         <div class="flex flex-wrap justify-center">
             <span class="skill-button">C++</span>
             <span class="skill-button">Python</span>
             <span class="skill-button">Javascript</span>
             <span class="skill-button">SQL</span>
             <span class="skill-button">MongoDB</span>
-
             <span class="skill-button">React.js</span>
             <span class="skill-button">Node.js</span>
             <span class="skill-button">Express.js</span>
-            
             <span class="skill-button">Machine Learning</span>
             <span class="skill-button">Problem solving & DSA</span>
-
         </div>
     </div>
 
@@ -209,6 +279,7 @@
         <p class="text-lg proj-button" onclick="toggleDetails('proj-details-3')">Credit Card Default Prediction</p>
         <p id="proj-details-3" class="hidden text-gray-700 mt-2">
             Built a machine learning model using Python and Scikit-learn to predict credit card defaults and improve financial risk assessment.
+</center>
         </p>
     </div>
 </body>
