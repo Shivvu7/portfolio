@@ -210,9 +210,51 @@
     <!-- Profile Section -->
     <section class="text-center p-10">
         <img src="your-profile.jpg" alt="Profile Photo" class="profile-img shadow-md mx-auto">
-        <h1 class="text-5xl font-extrabold text-[#6f4e37] mt-4">Sivasai Sariki</h1>
-        <p class="text-lg mt-2 text-[#6f4e37]">Software Developer | Data Scientist | Web Developer</p>
+<h1 class="text-5xl font-extrabold text-black mt-4 custom-text">
+  Sivasai Sariki
+</h1>
+
+<style>
+  .custom-text {
+    -webkit-text-stroke: 2px white; /* White border */
+    color: #6f4e37; /* Font color */
+  }
+</style>
+
+   <p class=""text-5xl font-extrabold text-black mt-4 custom-text"">
+  Aspiring Software Developer 
+</p>
+<style>
+  .custom-subtext {
+    -webkit-text-stroke: 1px white; /* White border */
+    color: #ffffff; /* Coffee color */
+  }
+</style>
+
+
     </section>
+
+<div class="flex justify-center space-x-4 mt-6">
+
+    <!-- LinkedIn Button -->
+    <a href="https://www.linkedin.com/in/sivasai-sariki-407774229/" target="_blank" class="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-500 transition">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="w-6 h-6">
+        <span>LinkedIn</span>
+    </a>
+
+    <!-- GitHub Button -->
+    <a href="https://github.com/Shivvu7" target="_blank" class="flex items-center space-x-2 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-700 transition">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-6 h-6">
+        <span>GitHub</span>
+    </a>
+
+    <!-- GFG Button -->
+    <a href="https://www.geeksforgeeks.org/user/shivvu_sariki/" target="_blank" class="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-500 transition">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/GeeksforGeeks.svg" alt="GFG" class="w-6 h-6">
+        <span>GFG</span>
+    </a>
+</div>
+
 
     <!-- Navigation Buttons -->
     <div class="flex justify-center space-x-4 p-6">
@@ -228,9 +270,8 @@
 <center>
     <div id="intro" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4">
         <p class="text-lg">
-            Aspiring Software Development Engineer (SDE) with a strong foundation in Web Development and Machine Learning.
+            Aspiring SDE with a strong foundation in Web Development and Machine Learning.
             Passionate about solving complex problems, optimizing systems, and building scalable applications.
-            Proficient in C++, Python, React.js, and Cloud Computing.
             Eager to contribute innovative solutions while continuously learning and growing in a dynamic tech environment.
         </p>
     </div>
@@ -241,12 +282,13 @@
             <span class="skill-button">Python</span>
             <span class="skill-button">Javascript</span>
             <span class="skill-button">SQL</span>
-            <span class="skill-button">MongoDB</span>
-            <span class="skill-button">React.js</span>
-            <span class="skill-button">Node.js</span>
-            <span class="skill-button">Express.js</span>
-            <span class="skill-button">Machine Learning</span>
-            <span class="skill-button">Problem solving & DSA</span>
+          <span class="skill-button">Machine Learning</span>
+	<span class="skill-button">Data Science</span>
+            <span class="skill-button">MERN Stack</span>
+     
+            <span class="skill-button">IOT</span>
+            
+           
         </div>
     </div>
 
@@ -258,27 +300,36 @@
 
         <p class="text-lg exp-button" onclick="toggleDetails('exp-details-2')">Web Developer Intern - Delphini Labs</p>
         <p id="exp-details-2" class="hidden text-gray-700 mt-2">
-            Developed and maintained responsive web applications using React.js, Tailwind CSS, and Vite.
-            Collaborated with teams to design user-friendly interfaces and improve UI/UX.
+            Developed and maintained responsive web applications.            Collaborated with teams to design user-friendly interfaces and improve UI/UX.
             Optimized website performance using best coding practices.
             Used Git/GitHub for version control and participated in Agile workflows.
         </p>
     </div>
 
-    <div id="projects" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
-        <p class="text-lg proj-button" onclick="toggleDetails('proj-details-1')">Chatbot Application</p>
-        <p id="proj-details-1" class="hidden text-gray-700 mt-2">
-            Developed a chatbot using NLP for intelligent responses, integrated with a user-friendly UI, and trained on custom datasets.
-        </p>
+  <div id="projects" class="content-section p-6 text-center bg-white shadow-md rounded-lg m-4 hidden">
+    <p class="text-lg proj-button" onclick="toggleDetails('proj-details-1')">Chatbot Application</p>
+    <p id="proj-details-1" class="hidden text-gray-700 mt-2">
+        Developed a chatbot using NLP for intelligent responses, integrated with a user-friendly UI, and trained on custom datasets.
+    </p>
 
-        <p class="text-lg proj-button" onclick="toggleDetails('proj-details-2')">Smart Garbage Bin</p>
-        <p id="proj-details-2" class="hidden text-gray-700 mt-2">
-            Designed an IoT-based smart bin with proximity sensors for automatic lid opening, waste classification, and weight monitoring.
-        </p>
+    <p class="text-lg proj-button" onclick="toggleDetails('proj-details-2')">Smart Garbage Bin</p>
+    <p id="proj-details-2" class="hidden text-gray-700 mt-2">
+        Designed an IoT-based smart bin with proximity sensors for automatic lid opening, waste classification, and weight monitoring.
+    </p>
 
-        <p class="text-lg proj-button" onclick="toggleDetails('proj-details-3')">Credit Card Default Prediction</p>
-        <p id="proj-details-3" class="hidden text-gray-700 mt-2">
-            Built a machine learning model using Python and Scikit-learn to predict credit card defaults and improve financial risk assessment.
+    <p class="text-lg proj-button" onclick="toggleDetails('proj-details-3')">Credit Card Fraud Detection</p>
+    <p id="proj-details-3" class="hidden text-gray-700 mt-2">
+        Built a machine learning model using Python and Scikit-learn to predict credit card fraud and improve financial risk assessment.
+        <br>
+        🔗 <a href="https://github.com/Shivvu7/credit_card_fraud_detection" target="_blank" class="text-blue-500 hover:underline">
+            click to View Project
+        </a>
+
+
+
+    </p>
+</div>
+
 </center>
         </p>
     </div>
